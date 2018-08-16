@@ -3,7 +3,7 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
-card_values = {'T':10,'J':11,'Q':12,'K':13,'A':14,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+CAED_VALUES = {'T':10,'J':11,'Q':12,'K':13,'A':14,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
 
 def is_straight(hand):
     '''
@@ -15,13 +15,13 @@ def is_straight(hand):
         Think of an algorithm: given the card face value how to check if it a straight
         Write the code for it and return True if it is a straight else return False
     '''
-    list1 = []
+    st_list = []
     for i in hand:
-        list1.append(card_values[i[0]])
-    #print(list1)
-    list1.sort()
-    for i in range(0, len(list1)-1):
-        if list1[i+1] - list1[i] != 1:
+        st_list.append(CAED_VALUES[i[0]])
+    #print(st_list)
+    st_list.sort()
+    for i in range(0, len(st_list)-1):
+        if st_list[i+1] - st_list[i] != 1:
             return False
     return True
 
@@ -45,54 +45,54 @@ def is_flush(hand):
     
 def four_of_a_kind(hand):
     '''four of a kind'''
-    li = []
+    four_list = []
     for h in hand:
-        li.append(card_values[h[0]])
-    li.sort()
-    for i in range(0, len(li)-3):
-        if li[i] == li[i+1] == li[i+2] == li[i+3]:
+        four_list.append(CAED_VALUES[h[0]])
+    four_list.sort()
+    for i in range(0, len(four_list)-3):
+        if four_list[i] == four_list[i+1] == four_list[i+2] == four_list[i+3]:
             return True
     return False
 
 def three_of_a_kind(hand):
     '''three of kind'''
-    l1 = []
+    three_list = []
     for h in hand:
-        l1.append(card_values[h[0]])
-    l1.sort()
-    for i in range(0, len(l1)-2):
-        if l1[i] == l1[i+1] == l1[i+2]:
+        three_list.append(CAED_VALUES[h[0]])
+    three_list.sort()
+    for i in range(0, len(three_list)-2):
+        if three_list[i] == three_list[i+1] == three_list[i+2]:
             return True
     return False
 
 def two_pair(hand):
     '''two pairs'''
-    l2 = []
+    two_list = []
     for h in hand:
-        l2.append(card_values[h[0]])
-    l2.sort()
-    for i in range(0, len(l2)-3):
-        if l2[i] == l2[i+1] and l2[i+2] == l2[i+3]:
+        two_list.append(CAED_VALUES[h[0]])
+    two_list.sort()
+    for i in range(0, len(two_list)-3):
+        if two_list[i] == two_list[i+1] and two_list[i+2] == two_list[i+3]:
             return True
     return False
 
 def one_pair(hand):
     '''one pair'''
-    l3 = []
+    one_list = []
     for h in hand:
-        l3.append(card_values[h[0]])
-    l3.sort()
-    for i in range(0,len(l3)-1):
-        if(l3[i]) == (l3[i+1]):
+        one_list.append(CAED_VALUES[h[0]])
+    one_list.sort()
+    for i in range(0,len(one_list)-1):
+        if(one_list[i]) == (one_list[i+1]):
             return True
     return False
 def full_house(hand):
-    l4 = []
+    full_list = []
     for h in hand:
-        l4.append(card_values[h[0]])
-    l4.sort()
-    for i in range(0, len(l4)-1):
-        if l4[i] == l4[i+1] == l4[i+2] and l4[i+3] == l4[i+4]:
+        full_list.append(CAED_VALUES[h[0]])
+    full_list.sort()
+    for i in range(0, len(full_list)-1):
+        if full_list[i] == full_list[i+1] == full_list[i+2] and full_list[i+3] == full_list[i+4]:
             return True
     return False
 
