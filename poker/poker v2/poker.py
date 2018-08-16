@@ -3,7 +3,7 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
-CARD_VALUES = {'T':10, 'J':11, 'Q':12, 'K':13, 'A':14, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9}
+card_values = {'T':10,'J':11,'Q':12,'K':13,'A':14,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
 
 def is_straight(hand):
     '''
@@ -15,15 +15,17 @@ def is_straight(hand):
         Think of an algorithm: given the card face value how to check if it a straight
         Write the code for it and return True if it is a straight else return False
     '''
-    st_list = []
+    list1 = []
     for i in hand:
-        st_list.append(CARD_VALUES[i[0]])
-    st_list.sort()
-    #print(st_list)
-    for i in range(0, len(st_list)-1):
-        if st_list[i+1] - st_list[i] != 1:
+        list1.append(card_values[i[0]])
+    print(list1)
+    list1.sort()
+    for i in range(0, len(list1)-1):
+        if list1[i+1] - list1[i] != 1:
             return False
     return True
+
+
 
 def is_flush(hand):
     '''
@@ -34,25 +36,65 @@ def is_flush(hand):
         Think of an algorithm: given the card suite how to check if it is a flush
         Write the code for it and return True if it is a flush else return False
     '''
-    for i in range(len(hand)-1):
-        if hand[i][1] != hand[i+1][1]:
+    temp = hand[0]
+    i = 0
+    for i in hand:
+        if temp[1] != i[1]:
             return False
     return True
-
-def is_four_of_a_kind(hand):
-    st_list = []
-    count = 0
-    for i in hand:
-        st_list.append(CARD_VALUES[i[0]])
-    st_list.sort()
-    #print(st_list)
-    for i in range(0, len(st_list)-1):
-        if st_list[i+1] - st_list[i] == 1:
-            count += 1
-        if count == 3:
+    
+def four_of_a_kind(hand):
+    '''four of a kind'''
+    li = []
+    for h in hand:
+        li.append(card_values[h[0]])
+    li.sort()
+    for i in range(0, len(li)-3):
+        if li[i] == li[i+1] == li[i+2] == li[i+3]:
             return True
     return False
 
+def three_of_a_kind(hand):
+    '''three of kind'''
+    l1 = []
+    for h in hand:
+        l1.append(card_values[h[0]])
+    l1.sort()
+    for i in range(0, len(l1)-2):
+        if l1[i] == l1[i+1] == l1[i+2]:
+            return True
+    return False
+
+def two_pair(hand):
+    '''two pairs'''
+    l2 = []
+    for h in hand:
+        l2.append(card_values[h[0]])
+    l2.sort()
+    for i in range(0, len(l2)-3):
+        if l2[i] == l2[i+1] and l2[i+2] == l2[i+3]:
+            return True
+    return False
+
+def one_pair(hand):
+    '''one pair'''
+    l3 = []
+    for h in hand:
+        l3.append(card_values[h[0]])
+    l3.sort()
+    for i in range(0,len(l3)-1):
+        if(l3[i]) == (l3[i+1]):
+            return True
+    return False
+def full_house(hand):
+    l4 = []
+    for h in hand:
+        l4.append(card_values[h[0]])
+    l4.sort()
+    for i in range(0, len(l4)-1):
+        if l4[i] == l4[i+1] == l4[i+2] and l4[i+3] == l4[i+4]:
+            return True
+    return False
 
 def hand_rank(hand):
     '''
@@ -78,18 +120,24 @@ def hand_rank(hand):
     # third would be a straight with the return value 1
     # any other hand would be the fourth best with the return value 0
     # max in poker function uses these return values to select the best hand
-    flush = is_flush(hand)
-    straight = is_straight(hand)
-    four = is_four_of_a_kind(hand)
-    if four is True:
+    if is_straight(hand) and is_flush(hand):
+        return 8
+    elif four_of_a_kind(hand):
+        return 7
+    elif three_of_a_kind(hand) and one_pair(hand):
+        return 6
+    elif is_flush(hand):
+        return 5
+    elif is_straight(hand):
         return 4
-    if flush and straight is True:
+    elif three_of_a_kind(hand):
         return 3
-    if flush is True:
+    elif two_pair(hand):
         return 2
-    if straight is True:
+    elif one_pair(hand):
         return 1
-    return 0
+    else:
+        return 0
 
 def poker(hands):
     '''
@@ -101,6 +149,7 @@ def poker(hands):
 
         Output: Return the winning poker hand
     '''
+
 
     # the line below may be new to you
     # max function is provided by python library
