@@ -3,7 +3,7 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
-CAED_VALUES = {'T':10,'J':11,'Q':12,'K':13,'A':14,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+CARD_VALUES = {'T':10, 'J':11, 'Q':12, 'K':13, 'A':14, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9}
 
 def is_straight(hand):
     '''
@@ -17,7 +17,7 @@ def is_straight(hand):
     '''
     st_list = []
     for i in hand:
-        st_list.append(CAED_VALUES[i[0]])
+        st_list.append(CARD_VALUES[i[0]])
     #print(st_list)
     st_list.sort()
     for i in range(0, len(st_list)-1):
@@ -47,7 +47,7 @@ def four_of_a_kind(hand):
     '''four of a kind'''
     four_list = []
     for h in hand:
-        four_list.append(CAED_VALUES[h[0]])
+        four_list.append(CARD_VALUES[h[0]])
     four_list.sort()
     for i in range(0, len(four_list)-3):
         if four_list[i] == four_list[i+1] == four_list[i+2] == four_list[i+3]:
@@ -58,7 +58,7 @@ def three_of_a_kind(hand):
     '''three of kind'''
     three_list = []
     for h in hand:
-        three_list.append(CAED_VALUES[h[0]])
+        three_list.append(CARD_VALUES[h[0]])
     three_list.sort()
     for i in range(0, len(three_list)-2):
         if three_list[i] == three_list[i+1] == three_list[i+2]:
@@ -69,7 +69,7 @@ def two_pair(hand):
     '''two pairs'''
     two_list = []
     for h in hand:
-        two_list.append(CAED_VALUES[h[0]])
+        two_list.append(CARD_VALUES[h[0]])
     two_list.sort()
     for i in range(0, len(two_list)-3):
         if two_list[i] == two_list[i+1] and two_list[i+2] == two_list[i+3]:
@@ -80,7 +80,7 @@ def one_pair(hand):
     '''one pair'''
     one_list = []
     for h in hand:
-        one_list.append(CAED_VALUES[h[0]])
+        one_list.append(CARD_VALUES[h[0]])
     one_list.sort()
     for i in range(0,len(one_list)-1):
         if(one_list[i]) == (one_list[i+1]):
@@ -89,7 +89,7 @@ def one_pair(hand):
 def full_house(hand):
     full_list = []
     for h in hand:
-        full_list.append(CAED_VALUES[h[0]])
+        full_list.append(CARD_VALUES[h[0]])
     full_list.sort()
     for i in range(0, len(full_list)-1):
         if full_list[i] == full_list[i+1] == full_list[i+2] and full_list[i+3] == full_list[i+4]:
