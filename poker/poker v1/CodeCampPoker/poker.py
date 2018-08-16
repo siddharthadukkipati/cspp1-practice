@@ -36,7 +36,7 @@ def is_flush(hand):
     '''
     for i in range(len(hand)-1):
     	if hand[i][1] != hand[i+1][1]:
-    		retrun False
+    		return False
     return True
 
 def hand_rank(hand):
