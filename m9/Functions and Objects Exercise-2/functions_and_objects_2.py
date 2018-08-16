@@ -4,8 +4,8 @@
 [2, -3, 9, -8]
 """
 def apply_to_each(list_to_be_modified, function_to_be_modified):
-    """enumaration"""
-    for i in enumerate(list_to_be_modified):
+    """enumerate"""
+    for i in range(len(list_to_be_modified)):
         list_to_be_modified[i] = function_to_be_modified(list_to_be_modified[i])
     return list_to_be_modified
 
