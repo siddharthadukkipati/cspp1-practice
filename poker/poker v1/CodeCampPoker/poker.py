@@ -23,9 +23,7 @@ def is_straight(hand):
     for i in range(0, len(st_list)-1):
     	if st_list[i+1] - st_list[i] != 1:
     		return False
-    	return True
-
-
+    return True
 
 def is_flush(hand):
     '''
@@ -36,6 +34,10 @@ def is_flush(hand):
         Think of an algorithm: given the card suite how to check if it is a flush
         Write the code for it and return True if it is a flush else return False
     '''
+    for i in range(len(hand)-1):
+    	if hand[i][1] != hand[i+1][1]:
+    		retrun False
+    return True
 
 def hand_rank(hand):
     '''
@@ -61,6 +63,13 @@ def hand_rank(hand):
     # third would be a straight with the return value 1
     # any other hand would be the fourth best with the return value 0
     # max in poker function uses these return values to select the best hand
+    flush = is_flush(hand)
+    straight = is_straight(hand)
+    if flush and straight is True:
+    return 3
+  if flush is True:
+    return 2
+  if straight is True:
     return 1
 
 def poker(hands):
