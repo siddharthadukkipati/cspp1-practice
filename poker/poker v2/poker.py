@@ -87,6 +87,7 @@ def one_pair(hand):
             return True
     return False
 def full_house(hand):
+    '''full house'''
     full_list = []
     for h in hand:
         full_list.append(CARD_VALUES[h[0]])
@@ -136,8 +137,7 @@ def hand_rank(hand):
         return 2
     elif one_pair(hand):
         return 1
-    else:
-        return 0
+    return 0
 
 def poker(hands):
     '''
