@@ -39,6 +39,21 @@ def is_flush(hand):
             return False
     return True
 
+def is_four_of_a_kind(hand):
+    st_list = []
+    count = 0
+    for i in hand:
+        st_list.append(CARD_VALUES[i[0]])
+    st_list.sort()
+    #print(st_list)
+    for i in range(0, len(st_list)-1):
+        if st_list[i+1] - st_list[i] == 1:
+            count += 1
+        if count == 3:
+            return True
+    return False
+
+
 def hand_rank(hand):
     '''
         You will code this function. The goal of the function is to
@@ -65,6 +80,9 @@ def hand_rank(hand):
     # max in poker function uses these return values to select the best hand
     flush = is_flush(hand)
     straight = is_straight(hand)
+    four = is_four_of_a_kind(hand)
+    if four is True:
+        return 4
     if flush and straight is True:
         return 3
     if flush is True:
