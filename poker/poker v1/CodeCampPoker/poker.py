@@ -3,7 +3,7 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
-card_values = {'T':10,'J':11,'Q':12,'K':13,'A':14,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+Card_Values = {'T':10, 'J':11, 'Q':12, 'K':13, 'A':14, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9}
 
 def is_straight(hand):
     '''
@@ -17,7 +17,7 @@ def is_straight(hand):
     '''
     st_list = []
     for i in hand:
-        st_list.append(card_values[i[0]])
+        st_list.append(Card_Values[i[0]])
     st_list.sort()
     #print(st_list)
     for i in range(0, len(st_list)-1):
