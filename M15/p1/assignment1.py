@@ -230,6 +230,9 @@ class CiphertextMessage(Message):
         # pass
 
     def no_of_valid_words(self, decr_msg_txt):
+        """
+        no of vaild words function
+        """
         valid_wrd_cnt = 0
         for word in decr_msg_txt.split(" "):
             if is_word(self.valid_words, word):
@@ -270,4 +273,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
