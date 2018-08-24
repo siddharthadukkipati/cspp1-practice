@@ -40,7 +40,7 @@ def load_words(file_name):
 
 WORDLIST_FILENAME = 'words.txt'
 
-class Message(object):
+class Message():
     ''' Grader's Implementation of Message Object '''
 
     ### DO NOT MODIFY THIS METHOD ###
@@ -131,7 +131,52 @@ class Message(object):
 
 
 ### Paste your implementation of the `PlaintextMessage` class here
+class PlaintextMessage(Message):
+    '''
+    Implementation of plaintext message class
+    '''
+    def __init__(self, text, shift):
+        '''
+        Initializes a PlaintextMessage object
+        '''
+        # pass #delete this line and replace with your code here
+        Message.__init__(self, text)
+        self.shift = shift
+        self.encrypting_dict = self.build_shift_dict(shift)
+        self.message_text_encrypted = self.apply_shift(shift)
 
+
+    def get_shift(self):
+        '''
+        Used to safely access self.shift outside of the class
+        '''
+        return self.shift
+
+    def get_encrypting_dict(self):
+        '''
+        Used to safely access a copy self.encrypting_dict outside of the class
+        '''
+        return self.encrypting_dict.copy()
+
+    def get_message_text_encrypted(self):
+        '''
+        Used to safely access self.message_text_encrypted outside of the class
+        '''
+        return self.message_text_encrypted[:]
+
+    def change_shift(self, shift):
+        '''
+        Changes self.shift of the PlaintextMessage and updates other
+        attributes determined by shift (ie. self.encrypting_dict and
+        message_text_encrypted).
+
+        shift (integer): the new shift that should be associated with this message.
+        0 <= shift < 26
+
+        '''
+        self.shift = shift
+        self.encrypting_dict = self.build_shift_dict(shift)
+        self.message_text_encrypted = self.apply_shift(shift)
 
 
 def main():
@@ -148,3 +193,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
