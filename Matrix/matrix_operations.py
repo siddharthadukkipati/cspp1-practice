@@ -18,8 +18,8 @@ def mult_matrix(matrix_1, matrix_2):
     # rows = len(matrix_1)
     cols = len(matrix_2[0])
     rows_2 = len(matrix_2)
-    for i, value in enumerate(matrix_1):
-        # print(i, value)
+    for i, _ in enumerate(matrix_1):
+        # print(i, _)
         for j in range(cols):
             sum_value = 0
             for k in range(rows_2):
